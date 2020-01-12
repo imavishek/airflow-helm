@@ -4,8 +4,8 @@ airflow:
   service:
     type: NodePort
   image:
-    repository: airflow
-    tag: latest
+    repository: eu.gcr.io/taiyo-239217/airflow
+    tag: fae4885
     pull_policy: IfNotPresent
   config:
   logs:
