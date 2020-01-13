@@ -70,12 +70,4 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        volumeMounts:
-        - name: airflow-config
-          mountPath: /usr/local/airflow/airflow.cfg
-          subPath: airflow.cfg
-        - name: airflow-dags
-          mountPath: /usr/local/airflow/dags
-        - name: airflow-logs
-          mountPath: /usr/local/airflow/logs
-      
+        
