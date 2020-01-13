@@ -38,7 +38,7 @@ airflow:
       username: imavishek
       password: '@abhipsha1996@'
       branch: master
-      subpath: test-dags
+      subpath: airflow/example_dags
   rbac:
     enabled: false
     # Initial rbac users can be defined here as a list of maps.
