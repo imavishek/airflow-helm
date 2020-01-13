@@ -2,7 +2,6 @@
 
 kubectl apply -f airflow/tiller.yaml
 helm init --service-account tiller
-helm dependency update
 
 helm upgrade --install airflow airflow/ --values airflow/values.yaml
 
