@@ -78,22 +78,4 @@ spec:
           mountPath: /usr/local/airflow/dags
         - name: airflow-logs-2
           mountPath: /usr/local/airflow/logs
-      volumes:
-      - name: airflow-logs-2
-        persistentVolumeClaim:
-          claimName: {{ if .Values.airflow.logs.persistence.existingClaim }}{{ .Values.airflow.logs.persistence.existingClaim }}{{- else }}{{ template "airflow.fullname" . }}-logs-2{{- end }}
-      - name: airflow-config
-        configMap:
-          name: {{ template "airflow.fullname" . }}-config
-      - name: {{ template "airflow.fullname" . }}-dags
-        {{- if .Values.airflow.dags.persistence.enabled }}
-        persistentVolumeClaim:
-          {{- if .Values.airflow.dags.persistence.existingClaim }}
-          claimName: "{{ .Values.airflow.dags.persistence.existingClaim }}"
-          {{- else }}
-          claimName: {{ template "airflow.fullname" . }}-dags
-          {{- end }}
-          readOnly: true
-        {{- else }}
-        emptyDir: {}
-        {{- end }}
+      

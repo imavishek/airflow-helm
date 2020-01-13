@@ -172,35 +172,4 @@ spec:
           httpGet:
             path: /health
             port: 8080
-      volumes:
-      - name: airflow-logs
-        persistentVolumeClaim:
-          claimName: {{ if .Values.airflow.logs.persistence.existingClaim }}{{ .Values.airflow.logs.persistence.existingClaim }}{{- else }}{{ template "airflow.fullname" . }}-logs{{- end }}
-      - name: airflow-config
-        configMap:
-          name: {{ template "airflow.fullname" . }}-config
-      - name: webserver-config
-        secret:
-          secretName: webserver-config
-      - name: init-airflow
-        configMap:
-          name: {{ template "airflow.fullname" . }}-init
-      - name: nginx
-        configMap:
-          name: {{ template "airflow.fullname" . }}-nginx
-      {{- if .Values.airflow.dags.persistence.enabled }}
-      - name: init-dags
-        configMap:
-          name: {{ template "airflow.fullname" . }}-init-dags
-      {{- end }}
-      - name: airflow-dags
-        {{- if .Values.airflow.dags.persistence.enabled }}
-        persistentVolumeClaim:
-          {{- if .Values.airflow.dags.persistence.existingClaim }}
-          claimName: "{{ .Values.airflow.dags.persistence.existingClaim }}"
-          {{- else }}
-          claimName: {{ template "airflow.fullname" . }}-dags
-          {{- end }}
-        {{- else }}
-        emptyDir: {}
-        {{- end }}
+      
