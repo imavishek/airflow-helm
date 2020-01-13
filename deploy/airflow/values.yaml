@@ -10,7 +10,7 @@ airflow:
   config:
   logs:
     persistence:
-      accessMode: ReadOnlyMany
+      accessMode: ReadWriteOnce
       ##
       ## Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
