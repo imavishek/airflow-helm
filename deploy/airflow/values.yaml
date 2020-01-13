@@ -4,8 +4,8 @@ airflow:
   service:
     type: NodePort
   image:
-    repository: airflow
-    tag: latest
+    repository: eu.gcr.io/taiyo-239217/airflow
+    tag: fae4885
     pull_policy: IfNotPresent
   config:
   logs:
@@ -35,7 +35,8 @@ airflow:
       # subpath is the relative directory path in the git repository where
       # the dags can be found.
       url: https://github.com/imavishek/airflow
-      
+      username: imavishek
+      password: '@abhipsha1996@'
       branch: master
       subpath: test-dags
   rbac:
