@@ -34,7 +34,7 @@ airflow:
       # Play around with different repositories, branches and subpaths
       # subpath is the relative directory path in the git repository where
       # the dags can be found.
-      url: https://github.com/imavishek/airflow
+      url: https://github.com/apache/airflow
       username: imavishek
       password: '@abhipsha1996@'
       branch: master
