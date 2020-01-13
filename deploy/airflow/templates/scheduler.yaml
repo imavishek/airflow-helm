@@ -76,7 +76,7 @@ spec:
           subPath: airflow.cfg
         - name: airflow-dags
           mountPath: /usr/local/airflow/dags
-        - name: airflow-logs
+        - name: airflow-logs-2
           mountPath: /usr/local/airflow/logs
       volumes:
       - name: airflow-logs-2
