@@ -39,13 +39,7 @@ spec:
       - name: "init-airflow"
         image: {{ .Values.airflow.image.repository }}:{{ .Values.airflow.image.tag }}
         imagePullPolicy: {{ .Values.airflow.image.pull_policy }}
-        volumeMounts:
-          - name: airflow-config
-            mountPath: /usr/local/airflow/airflow.cfg
-            subPath: airflow.cfg
-          - name: init-airflow
-            mountPath: /usr/local/init-airflow.sh
-            subPath: init-airflow.sh
+        
         envFrom:
           - secretRef:
               name: {{ template "airflow.fullname" . }}-env
@@ -58,15 +52,7 @@ spec:
       - name: "init-dags"
         image: {{ .Values.airflow.image.repository }}:{{ .Values.airflow.image.tag }}
         imagePullPolicy: {{ .Values.airflow.image.pull_policy }}
-        volumeMounts:
-          - name: airflow-dags
-            mountPath: /usr/local/airflow/dags
-          - name: airflow-config
-            mountPath: /usr/local/airflow/airflow.cfg
-            subPath: airflow.cfg
-          - name: init-dags
-            mountPath: /usr/local/init-dags.sh
-            subPath: init-dags.sh
+        
         envFrom:
           - secretRef:
               name: {{ template "airflow.fullname" . }}-env
@@ -81,9 +67,7 @@ spec:
       - name: git-sync
         image: k8s.gcr.io/git-sync:v3.0.1
         imagePullPolicy: IfNotPresent
-        volumeMounts:
-          - name: airflow-dags
-            mountPath: /git
+        
         env:
           - name: GIT_SYNC_REPO
             value: {{ .Values.airflow.dags.git.url }}
@@ -112,10 +96,7 @@ spec:
         ports:
           - name: nginx
             containerPort: 80
-        volumeMounts:
-          - name: nginx
-            mountPath: /etc/nginx/conf.d/default.conf
-            subPath: nginx.conf
+        
         readinessProbe:
           initialDelaySeconds: 5
           timeoutSeconds: 5
