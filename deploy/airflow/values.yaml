@@ -8,6 +8,7 @@ airflow:
     tag: fae4885
     pull_policy: IfNotPresent
   config:
+  executor: KubernetesExecutor
   logs:
     persistence:
       accessMode: ReadWriteOnce
