@@ -9,7 +9,7 @@ airflow:
   executor: KubernetesExecutor
   logs:
     persistence:
-      ## accessMode: ReadWriteOnce
+      accessMode: ReadWriteOnce
       ##
       ## Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
@@ -20,7 +20,7 @@ airflow:
       # storageClass: default
       ##
       ## Existing claim to use
-      existingClaim: nfs-pvc
+      existingClaim:
       existingClaimSubPath:
       ##
       ## Persistant storage size request
