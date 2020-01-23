@@ -11,7 +11,8 @@ airflow:
   executor: KubernetesExecutor
   logs:
     persistence:
-      accessMode: ReadWriteOnce
+      enabled: false
+      ## accessMode: ReadWriteOnce
       ##
       ## Persistent Volume Storage Class
       ## If defined, storageClassName: <storageClass>
@@ -22,11 +23,11 @@ airflow:
       # storageClass: default
       ##
       ## Existing claim to use
-      existingClaim:
-      existingClaimSubPath:
+      ## existingClaim:
+      ## existingClaimSubPath:
       ##
       ## Persistant storage size request
-      size: 1Gi
+      ## size: 1Gi
 
   dags:
     persistence:
