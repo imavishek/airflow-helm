@@ -20,7 +20,7 @@ airflow:
       ## If undefined (the default) or set to null, no storageClassName spec is
       ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
       ##   GKE, AWS & OpenStack)
-      storageClass: default
+      # storageClass: default
       ##
       ## Existing claim to use
       existingClaim:
